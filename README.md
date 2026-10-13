@@ -144,10 +144,6 @@ The initial retrieval threshold is `0.40`. It was selected from the first corpus
 - The prompt-injection filter is deliberately simple and should be combined with stronger isolation and policy enforcement in production.
 - The application is designed for a small curated corpus, not unrestricted medical search.
 
-## Interview material
-
-Recruitment preparation is kept outside this application in the sibling `zs_preparation/` directory. The application repository itself contains only the product, tests, evaluation data, and technical documentation.
-
 ## Responsible-use rules
 
 - Use only approved public documents.
