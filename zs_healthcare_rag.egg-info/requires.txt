@@ -1,0 +1,12 @@
+chromadb<2,>=0.5
+fastapi<1,>=0.115
+pydantic<3,>=2.8
+pypdf<7,>=5
+requests<3,>=2.32
+sentence-transformers<6,>=3
+uvicorn[standard]<1,>=0.30
+
+[dev]
+httpx<1,>=0.27
+pytest<10,>=8
+pytest-cov<8,>=5

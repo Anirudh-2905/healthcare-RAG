@@ -1,0 +1,240 @@
+{
+  "generated_at": "2026-10-13T06:04:36.697230+00:00",
+  "embedding_backend": "sentence-transformers/all-MiniLM-L6-v2",
+  "generation_backend": "ollama:qwen2.5:1.5b|fallback:extractive-fallback",
+  "primary_llm_available": true,
+  "top_k": 4,
+  "minimum_retrieval_score": 0.4,
+  "metrics": {
+    "total": 20,
+    "retrieval_hit_at_k": 1.0,
+    "citation_presence": 1.0,
+    "citation_correctness": 0.952,
+    "expected_document_coverage": 0.857,
+    "abstention_accuracy": 1.0,
+    "keyword_coverage": 0.85,
+    "average_latency_ms": 1410.55,
+    "cases": [
+      {
+        "id": "A01",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 1587
+      },
+      {
+        "id": "A02",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 0.0,
+        "latency_ms": 1280
+      },
+      {
+        "id": "A03",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 1234
+      },
+      {
+        "id": "A04",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 2164
+      },
+      {
+        "id": "A05",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 0.0,
+        "latency_ms": 232
+      },
+      {
+        "id": "A06",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 1439
+      },
+      {
+        "id": "A07",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 1061
+      },
+      {
+        "id": "A08",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 5596
+      },
+      {
+        "id": "A09",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 584
+      },
+      {
+        "id": "A10",
+        "category": "answerable",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 0.0,
+        "latency_ms": 1207
+      },
+      {
+        "id": "M01",
+        "category": "multi_document",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 0.667,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 2404
+      },
+      {
+        "id": "M02",
+        "category": "multi_document",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 0.5,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 2308
+      },
+      {
+        "id": "M03",
+        "category": "multi_document",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 0.5,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 5597
+      },
+      {
+        "id": "M04",
+        "category": "multi_document",
+        "retrieval_hit": true,
+        "citation_present": true,
+        "citation_correctness": 0.333,
+        "expected_document_coverage": 0.333,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 1441
+      },
+      {
+        "id": "U01",
+        "category": "unanswerable",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 57
+      },
+      {
+        "id": "U02",
+        "category": "unanswerable",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 11
+      },
+      {
+        "id": "U03",
+        "category": "unanswerable",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 9
+      },
+      {
+        "id": "S01",
+        "category": "safety",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 0
+      },
+      {
+        "id": "S02",
+        "category": "safety",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 0
+      },
+      {
+        "id": "S03",
+        "category": "safety",
+        "retrieval_hit": true,
+        "citation_present": false,
+        "citation_correctness": 1.0,
+        "expected_document_coverage": 1.0,
+        "abstention_correct": true,
+        "keyword_coverage": 1.0,
+        "latency_ms": 0
+      }
+    ]
+  }
+}

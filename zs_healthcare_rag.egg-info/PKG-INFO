@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: zs-healthcare-rag
+Version: 0.1.0
+Summary: A local, evidence-grounded healthcare research assistant with RAG, citations, safety, and evaluation.
+Requires-Python: >=3.11
+Requires-Dist: chromadb<2,>=0.5
+Requires-Dist: fastapi<1,>=0.115
+Requires-Dist: pydantic<3,>=2.8
+Requires-Dist: pypdf<7,>=5
+Requires-Dist: requests<3,>=2.32
+Requires-Dist: sentence-transformers<6,>=3
+Requires-Dist: uvicorn[standard]<1,>=0.30
+Provides-Extra: dev
+Requires-Dist: httpx<1,>=0.27; extra == "dev"
+Requires-Dist: pytest<10,>=8; extra == "dev"
+Requires-Dist: pytest-cov<8,>=5; extra == "dev"
