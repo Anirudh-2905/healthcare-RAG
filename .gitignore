@@ -8,4 +8,8 @@ data/chroma/
 data/catalog.db
 data/source_docs/*.pdf
 !data/source_docs/.gitkeep
-
+.DS_Store
+*.egg-info/
+build/
+dist/
+htmlcov/
