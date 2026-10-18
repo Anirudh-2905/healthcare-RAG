@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -25,6 +26,22 @@ def _path_from_env(name: str, default: str) -> Path:
     return value if value.is_absolute() else PROJECT_ROOT / value
 
 
+def _int_from_env(name: str, default: str) -> int:
+    value = os.getenv(name, default)
+    try:
+        return int(value)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an integer") from exc
+
+
+def _float_from_env(name: str, default: str) -> float:
+    value = os.getenv(name, default)
+    try:
+        return float(value)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be a number") from exc
+
+
 @dataclass(frozen=True)
 class Settings:
     app_name: str
@@ -42,6 +59,26 @@ class Settings:
     chunk_words: int
     chunk_overlap_words: int
     max_agent_steps: int
+
+    def __post_init__(self) -> None:
+        if self.top_k < 1:
+            raise ValueError("TOP_K must be at least 1")
+        if not 0.0 <= self.min_retrieval_score <= 1.0:
+            raise ValueError("MIN_RETRIEVAL_SCORE must be between 0 and 1")
+        if self.chunk_words < 1:
+            raise ValueError("CHUNK_WORDS must be at least 1")
+        if not 0 <= self.chunk_overlap_words < self.chunk_words:
+            raise ValueError(
+                "CHUNK_OVERLAP_WORDS must be non-negative and smaller than CHUNK_WORDS"
+            )
+        if self.max_agent_steps < 1:
+            raise ValueError("MAX_AGENT_STEPS must be at least 1")
+
+        parsed_ollama_url = urlparse(self.ollama_base_url)
+        if parsed_ollama_url.scheme not in {"http", "https"} or not parsed_ollama_url.netloc:
+            raise ValueError(
+                "OLLAMA_BASE_URL must be an absolute http:// or https:// URL"
+            )
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -67,11 +104,11 @@ class Settings:
                 "OLLAMA_BASE_URL", "http://127.0.0.1:11434"
             ).rstrip("/"),
             ollama_model=os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b"),
-            top_k=int(os.getenv("TOP_K", "4")),
-            min_retrieval_score=float(os.getenv("MIN_RETRIEVAL_SCORE", "0.35")),
-            chunk_words=int(os.getenv("CHUNK_WORDS", "220")),
-            chunk_overlap_words=int(os.getenv("CHUNK_OVERLAP_WORDS", "40")),
-            max_agent_steps=int(os.getenv("MAX_AGENT_STEPS", "2")),
+            top_k=_int_from_env("TOP_K", "4"),
+            min_retrieval_score=_float_from_env("MIN_RETRIEVAL_SCORE", "0.40"),
+            chunk_words=_int_from_env("CHUNK_WORDS", "220"),
+            chunk_overlap_words=_int_from_env("CHUNK_OVERLAP_WORDS", "40"),
+            max_agent_steps=_int_from_env("MAX_AGENT_STEPS", "2"),
         )
 
     def ensure_directories(self) -> None:

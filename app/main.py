@@ -30,6 +30,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(name)s %(message)s",
 )
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title=settings.app_name,
@@ -70,9 +71,10 @@ def get_service() -> HealthcareRAGService:
     try:
         return build_service()
     except Exception as exc:
+        logger.exception("service_initialization_failed")
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Local model or vector-store setup is unavailable: {exc}",
+            detail="Application dependencies are unavailable.",
         ) from exc
 
 

@@ -89,6 +89,12 @@ ollama serve
 
 If Ollama is unavailable, the application automatically returns a citation-first extractive answer. Retrieval and evaluation still work.
 
+Configuration is validated when the application starts. `TOP_K`, chunk sizes,
+overlap, retrieval threshold and agent-step settings must remain within valid
+ranges, and `OLLAMA_BASE_URL` must be an absolute `http://` or `https://` URL.
+Invalid configuration stops startup with a setting-specific error instead of
+failing later during a request.
+
 Run the API:
 
 ```bash

@@ -1,4 +1,5 @@
 from pathlib import Path
+import logging
 
 import pytest
 
@@ -6,8 +7,10 @@ import pytest
 pytest.importorskip("fastapi")
 pytest.importorskip("httpx")
 
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
+import app.main as main_module
 from app.main import app, get_service
 from tests.test_service import make_service
 
@@ -43,3 +46,20 @@ def test_abstaining_query_end_to_end(client: TestClient):
     payload = response.json()
     assert payload["abstained"] is True
     assert payload["citations"] == []
+
+
+def test_service_initialization_error_is_logged_but_not_exposed(
+    monkeypatch, caplog
+):
+    def fail_to_build():
+        raise RuntimeError("sensitive path: /private/example/catalog.db")
+
+    monkeypatch.setattr(main_module, "build_service", fail_to_build)
+
+    with caplog.at_level(logging.ERROR), pytest.raises(HTTPException) as raised:
+        get_service()
+
+    assert raised.value.status_code == 503
+    assert raised.value.detail == "Application dependencies are unavailable."
+    assert "/private/example/catalog.db" not in raised.value.detail
+    assert "/private/example/catalog.db" in caplog.text
